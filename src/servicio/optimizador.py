@@ -1,5 +1,15 @@
 # src/servicio/optimizador.py
 
+# Los costos del catálogo tienen un decimal (0.8, 7.5, ...). La tabla dp necesita
+# índices enteros, así que el costo y el presupuesto se trabajan en décimas de
+# unidad (0.8 -> 8, 7.5 -> 75). Así no se pierde precisión ni se excede el presupuesto.
+ESCALA = 10
+
+
+def _a_entero(valor: float) -> int:
+    """Convierte un monto a décimas de unidad (entero)."""
+    return round(valor * ESCALA)
+
 def calcular_puntaje_nutricional(alimento: dict) -> float:
     """Calcula un puntaje nutricional compuesto sumando aportes positivos 
     y penalizando excesos negativos (sodio y grasas saturadas)."""
@@ -22,14 +32,15 @@ def planificar_menu_optimizado(alimentos: list, presupuesto: float):
     """Resuelve la selección óptima mediante Programación Dinámica O(N * P_max)[cite: 8, 9, 12]."""
     n = len(alimentos)
     # dp[i][p] representa el máximo valor nutricional utilizando los primeros i alimentos con presupuesto p[cite: 12]
-    dp = [[0.0 for _ in range(int(presupuesto) + 1)] for _ in range(n + 1)]
+    capacidad = _a_entero(presupuesto)
+    dp = [[0.0 for _ in range(capacidad + 1)] for _ in range(n + 1)]
 
     # Construcción de la tabla de memorización[cite: 12]
     for i in range(1, n + 1):
         alimento = alimentos[i - 1]
-        costo = int(alimento["costo"])
+        costo = _a_entero(alimento["costo"])
         valor = calcular_puntaje_nutricional(alimento)
-        for p in range(int(presupuesto) + 1):
+        for p in range(capacidad + 1):
             dp[i][p] = dp[i - 1][p]
             if costo <= p:
                 valor_con_alimento = valor + dp[i - 1][p - costo]
@@ -37,15 +48,15 @@ def planificar_menu_optimizado(alimentos: list, presupuesto: float):
 
     # Reconstrucción de la solución (Backtracking)[cite: 12, 13]
     seleccionados = []
-    p = int(presupuesto)
+    p = capacidad
     for i in range(n, 0, -1):
         if dp[i][p] != dp[i - 1][p]:
             alimento = alimentos[i - 1]
             seleccionados.append(alimento)
-            p -= int(alimento["costo"])
+            p -= _a_entero(alimento["costo"])
 
     seleccionados.reverse()
-    return seleccionados, dp[n][int(presupuesto)]
+    return seleccionados, dp[n][capacidad]
 
 
 def planificar_menu_greedy(alimentos: list, presupuesto: float):
