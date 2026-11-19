@@ -30,6 +30,9 @@ def calcular_puntaje_nutricional(alimento: dict) -> float:
 
 def planificar_menu_optimizado(alimentos: list, presupuesto: float):
     """Resuelve la selección óptima mediante Programación Dinámica O(N * P_max)[cite: 8, 9, 12]."""
+    if presupuesto <= 0 or not alimentos:
+        return [], 0.0
+
     n = len(alimentos)
     # dp[i][p] representa el máximo valor nutricional utilizando los primeros i alimentos con presupuesto p[cite: 12]
     capacidad = _a_entero(presupuesto)
@@ -61,6 +64,9 @@ def planificar_menu_optimizado(alimentos: list, presupuesto: float):
 
 def planificar_menu_greedy(alimentos: list, presupuesto: float):
     """Estrategia voraz basada en la eficiencia (puntaje por unidad monetaria)."""
+    if presupuesto <= 0 or not alimentos:
+        return [], 0.0, 0.0
+
     for alimento in alimentos:
         puntaje = calcular_puntaje_nutricional(alimento)
         alimento["eficiencia"] = puntaje / max(0.1, alimento["costo"])
