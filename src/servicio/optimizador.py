@@ -25,7 +25,7 @@ def calcular_puntaje_nutricional(alimento: dict) -> float:
 
     # Ponderación multicriterio
     puntaje = (pct_calorias * 0.35) + (pct_proteina * 0.45) - (pct_sodio * 0.10) - (pct_grasas * 0.10)
-    return max(0.1, round(puntaje, 2))
+    return round(puntaje, 2)
 
 
 def planificar_menu_optimizado(alimentos: list, presupuesto: float):
