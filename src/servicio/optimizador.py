@@ -10,46 +10,48 @@ def _a_entero(valor: float) -> int:
     """Convierte un monto a décimas de unidad (entero)."""
     return round(valor * ESCALA)
 
+
 def calcular_puntaje_nutricional(alimento: dict) -> float:
-    """Calcula un puntaje nutricional compuesto sumando aportes positivos 
-    y penalizando excesos negativos (sodio y grasas saturadas)."""
-    META_CALORIAS = 2250.0  # Rango base diario sugerido
-    META_PROTEINA = 120.0   # Mínimo recomendado en gramos
-    LIMITE_SODIO = 2300.0   # mg máximos permitidos
-    LIMITE_GRASAS = 70.0    # g máximos permitidos
+    """Puntaje compuesto: suma aportes positivos (calorías, proteína) y resta
+    penalizaciones (sodio, grasas saturadas), cada uno como % de su meta diaria
+    y con un ponderador fijo."""
+    META_CALORIAS = 2250.0  # punto medio del rango diario 2000-2500 kcal
+    META_PROTEINA = 120.0   # mínimo diario en gramos
+    LIMITE_SODIO = 2300.0   # máximo diario en mg
+    LIMITE_GRASAS = 70.0    # máximo diario en g
 
     pct_calorias = (alimento["calorias"] / META_CALORIAS) * 100
     pct_proteina = (alimento["proteina"] / META_PROTEINA) * 100
     pct_sodio = (alimento["sodio"] / LIMITE_SODIO) * 100
     pct_grasas = (alimento["grasas_sat"] / LIMITE_GRASAS) * 100
 
-    # Ponderación multicriterio
     puntaje = (pct_calorias * 0.35) + (pct_proteina * 0.45) - (pct_sodio * 0.10) - (pct_grasas * 0.10)
     return round(puntaje, 2)
 
 
 def planificar_menu_optimizado(alimentos: list, presupuesto: float):
-    """Resuelve la selección óptima mediante Programación Dinámica O(N * P_max)[cite: 8, 9, 12]."""
+    """Mochila 0/1 por programación dinámica, O(N * Pmax).
+    dp[i][p] = máximo puntaje usando los primeros i alimentos con presupuesto p.
+    Devuelve (seleccionados, puntaje_total)."""
     if presupuesto <= 0 or not alimentos:
         return [], 0.0
 
     n = len(alimentos)
-    # dp[i][p] representa el máximo valor nutricional utilizando los primeros i alimentos con presupuesto p[cite: 12]
     capacidad = _a_entero(presupuesto)
     dp = [[0.0 for _ in range(capacidad + 1)] for _ in range(n + 1)]
 
-    # Construcción de la tabla de memorización[cite: 12]
+    # Construcción de la tabla de memorización
     for i in range(1, n + 1):
         alimento = alimentos[i - 1]
         costo = _a_entero(alimento["costo"])
         valor = calcular_puntaje_nutricional(alimento)
         for p in range(capacidad + 1):
-            dp[i][p] = dp[i - 1][p]
-            if costo <= p:
-                valor_con_alimento = valor + dp[i - 1][p - costo]
-                dp[i][p] = max(dp[i][p], valor_con_alimento)
+            dp[i][p] = dp[i - 1][p]                       # opción 1: no tomarlo
+            if costo <= p:                                # opción 2: tomarlo si cabe
+                dp[i][p] = max(dp[i][p], valor + dp[i - 1][p - costo])
 
-    # Reconstrucción de la solución (Backtracking)[cite: 12, 13]
+    # Reconstrucción (backtracking): si el valor cambió respecto a la fila anterior,
+    # el alimento i participó en la solución.
     seleccionados = []
     p = capacidad
     for i in range(n, 0, -1):
