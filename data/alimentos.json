@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "nombre": "Pechuga de Pollo",
+    "categoria": "proteina",
+    "costo": 5.0,
+    "calorias": 165,
+    "proteina": 31.0,
+    "grasas_saturadas": 1.0,
+    "sodio": 70
+  },
+  {
+    "id": 2,
+    "nombre": "Carne de Res Magra",
+    "categoria": "proteina",
+    "costo": 7.5,
+    "calorias": 210,
+    "proteina": 26.0,
+    "grasas_saturadas": 3.5,
+    "sodio": 60
+  },
+  {
+    "id": 3,
+    "nombre": "Huevo",
+    "categoria": "proteina",
+    "costo": 0.8,
+    "calorias": 70,
+    "proteina": 6.0,
+    "grasas_saturadas": 1.5,
+    "sodio": 70
+  },
+  {
+    "id": 4,
+    "nombre": "Atún en Lata",
+    "categoria": "proteina",
+    "costo": 4.5,
+    "calorias": 130,
+    "proteina": 28.0,
+    "grasas_saturadas": 0.5,
+    "sodio": 320
+  },
+  {
+    "id": 5,
+    "nombre": "Lentejas",
+    "categoria": "proteina",
+    "costo": 2.0,
+    "calorias": 230,
+    "proteina": 18.0,
+    "grasas_saturadas": 0.1,
+    "sodio": 5
+  },
+  {
+    "id": 6,
+    "nombre": "Frijoles Rojos",
+    "categoria": "proteina",
+    "costo": 2.2,
+    "calorias": 225,
+    "proteina": 15.0,
+    "grasas_saturadas": 0.2,
+    "sodio": 10
+  },
+  {
+    "id": 7,
+    "nombre": "Garbanzos",
+    "categoria": "proteina",
+    "costo": 2.5,
+    "calorias": 210,
+    "proteina": 12.0,
+    "grasas_saturadas": 0.3,
+    "sodio": 15
+  },
+  {
+    "id": 8,
+    "nombre": "Queso Fresco (Cuajada)",
+    "categoria": "proteina",
+    "costo": 4.0,
+    "calorias": 180,
+    "proteina": 14.0,
+    "grasas_saturadas": 6.0,
+    "sodio": 350
+  },
+  {
+    "id": 9,
+    "nombre": "Pechuga de Pavo",
+    "categoria": "proteina",
+    "costo": 6.0,
+    "calorias": 135,
+    "proteina": 29.0,
+    "grasas_saturadas": 0.8,
+    "sodio": 400
+  },
+  {
+    "id": 10,
+    "nombre": "Tilapia o Mojarra",
+    "categoria": "proteina",
+    "costo": 6.5,
+    "calorias": 128,
+    "proteina": 26.0,
+    "grasas_saturadas": 1.0,
+    "sodio": 55
+  },
+  {
+    "id": 11,
+    "nombre": "Cerdo Magro",
+    "categoria": "proteina",
+    "costo": 5.5,
+    "calorias": 195,
+    "proteina": 27.0,
+    "grasas_saturadas": 2.5,
+    "sodio": 65
+  },
+  {
+    "id": 12,
+    "nombre": "Yogur Griego Natural",
+    "categoria": "proteina",
+    "costo": 4.0,
+    "calorias": 100,
+    "proteina": 10.0,
+    "grasas_saturadas": 2.0,
+    "sodio": 50
+  },
+  {
+    "id": 13,
+    "nombre": "Tofu",
+    "categoria": "proteina",
+    "costo": 5.0,
+    "calorias": 144,
+    "proteina": 15.0,
+    "grasas_saturadas": 0.8,
+    "sodio": 10
+  },
+  {
+    "id": 14,
+    "nombre": "Arroz Blanco",
+    "categoria": "carbohidrato",
+    "costo": 1.5,
+    "calorias": 200,
+    "proteina": 4.0,
+    "grasas_saturadas": 0.2,
+    "sodio": 5
+  },
+  {
+    "id": 15,
+    "nombre": "Arroz Integral",
+    "categoria": "carbohidrato",
+    "costo": 2.0,
+    "calorias": 215,
+    "proteina": 5.0,
+    "grasas_saturadas": 0.4,
+    "sodio": 5
+  },
+  {
+    "id": 16,
+    "nombre": "Papa Sabanera / Pastusa",
+    "categoria": "carbohidrato",
+    "costo": 1.8,
+    "calorias": 160,
+    "proteina": 4.0,
+    "grasas_saturadas": 0.1,
+    "sodio": 10
+  },
+  {
+    "id": 17,
+    "nombre": "Papa Criolla",
+    "categoria": "carbohidrato",
+    "costo": 2.2,
+    "calorias": 175,
+    "proteina": 3.5,
+    "grasas_saturadas": 0.2,
+    "sodio": 8
+  },
+  {
+    "id": 18,
+    "nombre": "Yuca cocida",
+    "categoria": "carbohidrato",
+    "costo": 2.0,
+    "calorias": 180,
+    "proteina": 2.0,
+    "grasas_saturadas": 0.3,
+    "sodio": 15
+  },
+  {
+    "id": 19,
+    "nombre": "Plátano Maduro",
+    "categoria": "carbohidrato",
+    "costo": 1.7,
+    "calorias": 190,
+    "proteina": 2.0,
+    "grasas_saturadas": 0.2,
+    "sodio": 4
+  },
+  {
+    "id": 20,
+    "nombre": "Avena en Hojuelas",
+    "categoria": "carbohidrato",
+    "costo": 2.0,
+    "calorias": 150,
+    "proteina": 5.0,
+    "grasas_saturadas": 0.5,
+    "sodio": 2
+  },
+  {
+    "id": 21,
+    "nombre": "Pan Integral",
+    "categoria": "carbohidrato",
+    "costo": 3.0,
+    "calorias": 140,
+    "proteina": 6.0,
+    "grasas_saturadas": 0.8,
+    "sodio": 220
+  },
+  {
+    "id": 22,
+    "nombre": "Pasta",
+    "categoria": "carbohidrato",
+    "costo": 2.0,
+    "calorias": 220,
+    "proteina": 7.0,
+    "grasas_saturadas": 0.3,
+    "sodio": 5
+  },
+  {
+    "id": 23,
+    "nombre": "Maíz Tierno (Chócolo)",
+    "categoria": "carbohidrato",
+    "costo": 2.5,
+    "calorias": 145,
+    "proteina": 4.0,
+    "grasas_saturadas": 0.4,
+    "sodio": 15
+  },
+  {
+    "id": 24,
+    "nombre": "Quinua",
+    "categoria": "carbohidrato",
+    "costo": 4.5,
+    "calorias": 222,
+    "proteina": 8.0,
+    "grasas_saturadas": 0.5,
+    "sodio": 10
+  },
+  {
+    "id": 25,
+    "nombre": "Camote (Batata)",
+    "categoria": "carbohidrato",
+    "costo": 3.0,
+    "calorias": 162,
+    "proteina": 2.5,
+    "grasas_saturadas": 0.1,
+    "sodio": 27
+  },
+  {
+    "id": 26,
+    "nombre": "Arepa de Maíz",
+    "categoria": "carbohidrato",
+    "costo": 1.5,
+    "calorias": 150,
+    "proteina": 3.0,
+    "grasas_saturadas": 1.0,
+    "sodio": 180
+  },
+  {
+    "id": 27,
+    "nombre": "Aguacate",
+    "categoria": "grasas_saludables",
+    "costo": 3.5,
+    "calorias": 240,
+    "proteina": 3.0,
+    "grasas_saturadas": 3.0,
+    "sodio": 10
+  },
+  {
+    "id": 28,
+    "nombre": "Aceite de Oliva",
+    "categoria": "grasas_saludables",
+    "costo": 4.0,
+    "calorias": 120,
+    "proteina": 0.0,
+    "grasas_saturadas": 2.0,
+    "sodio": 0
+  },
+  {
+    "id": 29,
+    "nombre": "Maní sin sal",
+    "categoria": "grasas_saludables",
+    "costo": 3.0,
+    "calorias": 160,
+    "proteina": 7.0,
+    "grasas_saturadas": 2.0,
+    "sodio": 5
+  },
+  {
+    "id": 30,
+    "nombre": "Almendras",
+    "categoria": "grasas_saludables",
+    "costo": 5.0,
+    "calorias": 164,
+    "proteina": 6.0,
+    "grasas_saturadas": 1.0,
+    "sodio": 1
+  },
+  {
+    "id": 31,
+    "nombre": "Nueces",
+    "categoria": "grasas_saludables",
+    "costo": 6.0,
+    "calorias": 185,
+    "proteina": 4.3,
+    "grasas_saturadas": 1.5,
+    "sodio": 2
+  },
+  {
+    "id": 32,
+    "nombre": "Mantequilla de Maní",
+    "categoria": "grasas_saludables",
+    "costo": 4.0,
+    "calorias": 190,
+    "proteina": 8.0,
+    "grasas_saturadas": 3.0,
+    "sodio": 75
+  },
+  {
+    "id": 33,
+    "nombre": "Semillas de Chía",
+    "categoria": "grasas_saludables",
+    "costo": 3.5,
+    "calorias": 138,
+    "proteina": 4.7,
+    "grasas_saturadas": 0.8,
+    "sodio": 5
+  },
+  {
+    "id": 34,
+    "nombre": "Semillas de Linaza",
+    "categoria": "grasas_saludables",
+    "costo": 2.5,
+    "calorias": 110,
+    "proteina": 3.8,
+    "grasas_saturadas": 0.7,
+    "sodio": 3
+  },
+  {
+    "id": 35,
+    "nombre": "Semillas de Girasol",
+    "categoria": "grasas_saludables",
+    "costo": 3.0,
+    "calorias": 165,
+    "proteina": 5.5,
+    "grasas_saturadas": 1.2,
+    "sodio": 3
+  },
+  {
+    "id": 36,
+    "nombre": "Queso Costeño (Porción moderada)",
+    "categoria": "grasas_saludables",
+    "costo": 3.5,
+    "calorias": 150,
+    "proteina": 9.0,
+    "grasas_saturadas": 7.5,
+    "sodio": 550
+  },
+  {
+    "id": 37,
+    "nombre": "Coco Rallado Seco",
+    "categoria": "grasas_saludables",
+    "costo": 2.8,
+    "calorias": 185,
+    "proteina": 1.8,
+    "grasas_saturadas": 15.0,
+    "sodio": 8
+  },
+  {
+    "id": 38,
+    "nombre": "Brócoli al vapor",
+    "categoria": "vegetales",
+    "costo": 2.0,
+    "calorias": 50,
+    "proteina": 4.0,
+    "grasas_saturadas": 0.1,
+    "sodio": 30
+  },
+  {
+    "id": 39,
+    "nombre": "Zanahoria rallada",
+    "categoria": "vegetales",
+    "costo": 1.5,
+    "calorias": 35,
+    "proteina": 0.8,
+    "grasas_saturadas": 0.0,
+    "sodio": 40
+  },
+  {
+    "id": 40,
+    "nombre": "Tomate en Rodajas",
+    "categoria": "vegetales",
+    "costo": 1.8,
+    "calorias": 25,
+    "proteina": 1.1,
+    "grasas_saturadas": 0.0,
+    "sodio": 5
+  },
+  {
+    "id": 41,
+    "nombre": "Lechuga Crespa",
+    "categoria": "vegetales",
+    "costo": 1.5,
+    "calorias": 15,
+    "proteina": 1.2,
+    "grasas_saturadas": 0.0,
+    "sodio": 10
+  },
+  {
+    "id": 42,
+    "nombre": "Espinaca Fresca",
+    "categoria": "vegetales",
+    "costo": 2.2,
+    "calorias": 23,
+    "proteina": 2.9,
+    "grasas_saturadas": 0.0,
+    "sodio": 70
+  },
+  {
+    "id": 43,
+    "nombre": "Pepino Cohombro",
+    "categoria": "vegetales",
+    "costo": 1.5,
+    "calorias": 16,
+    "proteina": 0.7,
+    "grasas_saturadas": 0.0,
+    "sodio": 2
+  },
+  {
+    "id": 44,
+    "nombre": "Cebolla Cabezona",
+    "categoria": "vegetales",
+    "costo": 1.2,
+    "calorias": 40,
+    "proteina": 1.1,
+    "grasas_saturadas": 0.0,
+    "sodio": 4
+  },
+  {
+    "id": 45,
+    "nombre": "Habichuelas",
+    "categoria": "vegetales",
+    "costo": 2.0,
+    "calorias": 31,
+    "proteina": 1.8,
+    "grasas_saturadas": 0.0,
+    "sodio": 6
+  },
+  {
+    "id": 46,
+    "nombre": "Zuchini o Calabacín",
+    "categoria": "vegetales",
+    "costo": 2.5,
+    "calorias": 20,
+    "proteina": 1.5,
+    "grasas_saturadas": 0.0,
+    "sodio": 5
+  },
+  {
+    "id": 47,
+    "nombre": "Repollo Blanco o Morado",
+    "categoria": "vegetales",
+    "costo": 1.7,
+    "calorias": 25,
+    "proteina": 1.3,
+    "grasas_saturadas": 0.0,
+    "sodio": 18
+  },
+  {
+    "id": 48,
+    "nombre": "Remolacha cocida",
+    "categoria": "vegetales",
+    "costo": 2.0,
+    "calorias": 43,
+    "proteina": 1.6,
+    "grasas_saturadas": 0.0,
+    "sodio": 78
+  },
+  {
+    "id": 49,
+    "nombre": "Pimentón Rojo",
+    "categoria": "vegetales",
+    "costo": 2.8,
+    "calorias": 30,
+    "proteina": 1.0,
+    "grasas_saturadas": 0.0,
+    "sodio": 3
+  },
+  {
+    "id": 50,
+    "nombre": "Champiñones",
+    "categoria": "vegetales",
+    "costo": 4.0,
+    "calorias": 22,
+    "proteina": 3.1,
+    "grasas_saturadas": 0.0,
+    "sodio": 5
+  }
+]

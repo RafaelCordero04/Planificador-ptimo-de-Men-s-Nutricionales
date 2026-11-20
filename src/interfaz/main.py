@@ -1,17 +1,19 @@
 # src/interfaz/main.py
 
+import json
+from pathlib import Path
+
+from src.modelo.alimento import Alimento
 from src.servicio.optimizador import planificar_menu_optimizado, planificar_menu_greedy
 
+RUTA_CATALOGO = Path(__file__).resolve().parents[2] / "data" / "alimentos.json"
 
-def cargar_alimentos():
-    alimentos = [
-        {"nombre": "Pollo", "costo": 5, "calorias": 300, "proteina": 40, "sodio": 70, "grasas_saturadas": 3},
-        {"nombre": "Arroz", "costo": 2, "calorias": 250, "proteina": 5, "sodio": 5, "grasas_saturadas": 1},
-        {"nombre": "Huevo", "costo": 1, "calorias": 70, "proteina": 6, "sodio": 60, "grasas_saturadas": 2},
-        {"nombre": "Papa", "costo": 2, "calorias": 150, "proteina": 4, "sodio": 10, "grasas_saturadas": 0},
-        {"nombre": "Lentejas", "costo": 3, "calorias": 230, "proteina": 18, "sodio": 15, "grasas_saturadas": 1}
-    ]
-    return alimentos
+
+def cargar_alimentos(ruta=RUTA_CATALOGO) -> list:
+    """Lee el catálogo desde el JSON y lo entrega como lista de diccionarios."""
+    with open(ruta, "r", encoding="utf-8") as archivo:
+        registros = json.load(archivo)
+    return [Alimento.desde_diccionario(r).a_diccionario() for r in registros]
 
 
 def solicitar_presupuesto():
@@ -68,6 +70,8 @@ def mostrar_greedy(alimentos, presupuesto):
 
 
 def main():
+    alimentos = cargar_alimentos()
+
     while True:
         print("\n==========================================")
         print(" PLANIFICADOR ÓPTIMO DE MENÚS NUTRICIONALES")
@@ -81,17 +85,14 @@ def main():
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            alimentos = cargar_alimentos()
             presupuesto = solicitar_presupuesto()
             mostrar_programacion_dinamica(alimentos, presupuesto)
 
         elif opcion == "2":
-            alimentos = cargar_alimentos()
             presupuesto = solicitar_presupuesto()
             mostrar_greedy(alimentos, presupuesto)
 
         elif opcion == "3":
-            alimentos = cargar_alimentos()
             presupuesto = solicitar_presupuesto()
 
             mostrar_programacion_dinamica(alimentos, presupuesto)
