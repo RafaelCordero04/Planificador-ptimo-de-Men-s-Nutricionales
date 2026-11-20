@@ -16,7 +16,7 @@ def cargar_alimentos(ruta=RUTA_CATALOGO) -> list:
     return [Alimento.desde_diccionario(r).a_diccionario() for r in registros]
 
 
-def solicitar_presupuesto():
+def solicitar_presupuesto() -> int:
     while True:
         try:
             presupuesto = int(input("Ingrese el presupuesto disponible: $"))
@@ -30,43 +30,32 @@ def solicitar_presupuesto():
             print("Ingrese un número entero válido.")
 
 
+def imprimir_resultado(titulo, menu, puntaje, costo):
+    print(f"\n===== RESULTADO: {titulo} =====")
+    print("Alimentos seleccionados:")
+    for alimento in menu:
+        print(f"- {alimento['nombre']} | Costo: ${alimento['costo']:.2f}")
+
+    print("-" * 45)
+    print(f"Costo total: ${costo:.2f}")
+    print(f"Calorías totales: {sum(a['calorias'] for a in menu):.0f} kcal")
+    print(f"Proteína total: {sum(a['proteina'] for a in menu):.1f} g")
+    print(f"Grasas saturadas totales: {sum(a['grasas_saturadas'] for a in menu):.1f} g")
+    print(f"Sodio total: {sum(a['sodio'] for a in menu):.0f} mg")
+    print(f"Puntaje nutricional: {puntaje:.2f}")
+
+
 def mostrar_programacion_dinamica(alimentos, presupuesto):
     menu, puntaje = planificar_menu_optimizado(alimentos, presupuesto)
-
-    costo_total = sum(item["costo"] for item in menu)
-    calorias_totales = sum(item["calorias"] for item in menu)
-    proteina_total = sum(item["proteina"] for item in menu)
-
-    print("\n===== RESULTADO: PROGRAMACIÓN DINÁMICA =====")
-    print("Alimentos seleccionados:")
-
-    for alimento in menu:
-        print(f"- {alimento['nombre']} | Costo: ${alimento['costo']}")
-
-    print("-------------------------------------------")
-    print(f"Costo total: ${costo_total}")
-    print(f"Calorías totales: {calorias_totales} kcal")
-    print(f"Proteína total: {proteina_total} g")
-    print(f"Puntaje nutricional: {puntaje}")
+    costo = sum(a["costo"] for a in menu)
+    imprimir_resultado("PROGRAMACIÓN DINÁMICA", menu, puntaje, costo)
+    return puntaje
 
 
 def mostrar_greedy(alimentos, presupuesto):
     menu, puntaje, costo = planificar_menu_greedy(alimentos, presupuesto)
-
-    calorias = sum(item["calorias"] for item in menu)
-    proteina = sum(item["proteina"] for item in menu)
-
-    print("\n===== RESULTADO: ALGORITMO GREEDY =====")
-    print("Alimentos seleccionados:")
-
-    for alimento in menu:
-        print(f"- {alimento['nombre']} | Costo: ${alimento['costo']}")
-
-    print("--------------------------------------")
-    print(f"Costo total: ${costo}")
-    print(f"Calorías totales: {calorias} kcal")
-    print(f"Proteína total: {proteina} g")
-    print(f"Puntaje nutricional: {puntaje}")
+    imprimir_resultado("ALGORITMO GREEDY", menu, puntaje, costo)
+    return puntaje
 
 
 def main():
@@ -94,9 +83,9 @@ def main():
 
         elif opcion == "3":
             presupuesto = solicitar_presupuesto()
-
-            mostrar_programacion_dinamica(alimentos, presupuesto)
-            mostrar_greedy(alimentos, presupuesto)
+            p_dp = mostrar_programacion_dinamica(alimentos, presupuesto)
+            p_gr = mostrar_greedy(alimentos, presupuesto)
+            print(f"\nDiferencia de puntaje (DP - Greedy): {p_dp - p_gr:.2f}")
 
         elif opcion == "4":
             print("\nGracias por utilizar el planificador.")
