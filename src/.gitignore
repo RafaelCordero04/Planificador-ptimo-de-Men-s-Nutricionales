@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .vscode/
+
+#Base de datos local (se genera sola al ejecutar el programa)
+data/menus.db 
