@@ -63,23 +63,30 @@ def planificar_menu_optimizado(alimentos: list, presupuesto: float):
 
 
 def planificar_menu_greedy(alimentos: list, presupuesto: float):
-    """Estrategia voraz basada en la eficiencia (puntaje por unidad monetaria)."""
+    """Estrategia voraz: ordena por eficiencia (puntaje / costo) y agrega mientras
+    quepa en el presupuesto, O(N log N). No modifica el catálogo recibido.
+    Devuelve (seleccionados, puntaje_total, costo_acumulado)."""
     if presupuesto <= 0 or not alimentos:
         return [], 0.0, 0.0
 
+    capacidad = _a_entero(presupuesto)
+    candidatos = []
     for alimento in alimentos:
         puntaje = calcular_puntaje_nutricional(alimento)
-        alimento["eficiencia"] = puntaje / max(0.1, alimento["costo"])
+        if puntaje > 0:  # un alimento con puntaje no positivo nunca conviene
+            eficiencia = puntaje / max(0.1, alimento["costo"])
+            candidatos.append((eficiencia, puntaje, alimento))
 
-    alimentos_ordenados = sorted(alimentos, key=lambda x: x["eficiencia"], reverse=True)
+    candidatos.sort(key=lambda c: c[0], reverse=True)
+
     seleccionados = []
-    costo_acumulado = 0.0
+    gastado = 0  # en décimas de unidad
     puntaje_total = 0.0
-
-    for alimento in alimentos_ordenados:
-        if costo_acumulado + alimento["costo"] <= presupuesto:
+    for _, puntaje, alimento in candidatos:
+        costo = _a_entero(alimento["costo"])
+        if gastado + costo <= capacidad:
             seleccionados.append(alimento)
-            costo_acumulado += alimento["costo"]
-            puntaje_total += calcular_puntaje_nutricional(alimento)
+            gastado += costo
+            puntaje_total += puntaje
 
-    return seleccionados, puntaje_total, costo_acumulado
+    return seleccionados, puntaje_total, gastado / ESCALA
