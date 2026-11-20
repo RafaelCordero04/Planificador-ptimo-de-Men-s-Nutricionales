@@ -23,7 +23,7 @@ def calcular_puntaje_nutricional(alimento: dict) -> float:
     pct_calorias = (alimento["calorias"] / META_CALORIAS) * 100
     pct_proteina = (alimento["proteina"] / META_PROTEINA) * 100
     pct_sodio = (alimento["sodio"] / LIMITE_SODIO) * 100
-    pct_grasas = (alimento["grasas_sat"] / LIMITE_GRASAS) * 100
+    pct_grasas = (alimento["grasas_saturadas"] / LIMITE_GRASAS) * 100
 
     puntaje = (pct_calorias * 0.35) + (pct_proteina * 0.45) - (pct_sodio * 0.10) - (pct_grasas * 0.10)
     return round(puntaje, 2)

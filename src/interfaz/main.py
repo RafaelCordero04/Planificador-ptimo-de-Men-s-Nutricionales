@@ -5,11 +5,11 @@ from src.servicio.optimizador import planificar_menu_optimizado, planificar_menu
 
 def cargar_alimentos():
     alimentos = [
-        {"nombre": "Pollo", "costo": 5, "calorias": 300, "proteina": 40, "sodio": 70, "grasas_sat": 3},
-        {"nombre": "Arroz", "costo": 2, "calorias": 250, "proteina": 5, "sodio": 5, "grasas_sat": 1},
-        {"nombre": "Huevo", "costo": 1, "calorias": 70, "proteina": 6, "sodio": 60, "grasas_sat": 2},
-        {"nombre": "Papa", "costo": 2, "calorias": 150, "proteina": 4, "sodio": 10, "grasas_sat": 0},
-        {"nombre": "Lentejas", "costo": 3, "calorias": 230, "proteina": 18, "sodio": 15, "grasas_sat": 1}
+        {"nombre": "Pollo", "costo": 5, "calorias": 300, "proteina": 40, "sodio": 70, "grasas_saturadas": 3},
+        {"nombre": "Arroz", "costo": 2, "calorias": 250, "proteina": 5, "sodio": 5, "grasas_saturadas": 1},
+        {"nombre": "Huevo", "costo": 1, "calorias": 70, "proteina": 6, "sodio": 60, "grasas_saturadas": 2},
+        {"nombre": "Papa", "costo": 2, "calorias": 150, "proteina": 4, "sodio": 10, "grasas_saturadas": 0},
+        {"nombre": "Lentejas", "costo": 3, "calorias": 230, "proteina": 18, "sodio": 15, "grasas_saturadas": 1}
     ]
     return alimentos
 
